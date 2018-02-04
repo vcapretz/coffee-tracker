@@ -13,6 +13,8 @@
 		C722F4E120196EDF00F080AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C722F4E020196EDF00F080AA /* Assets.xcassets */; };
 		C722F4E420196EDF00F080AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C722F4E220196EDF00F080AA /* LaunchScreen.storyboard */; };
 		C722F4EF20196EDF00F080AA /* CafeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C722F4EE20196EDF00F080AA /* CafeTrackerTests.swift */; };
+		C7A1016320260949006B0FBB /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A1016220260949006B0FBB /* RatingControl.swift */; };
+		C7E1BEC72027BAC1000D0460 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7E1BEC62027BAC1000D0460 /* Coffee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		C722F4EA20196EDF00F080AA /* CafeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CafeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C722F4EE20196EDF00F080AA /* CafeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeTrackerTests.swift; sourceTree = "<group>"; };
 		C722F4F020196EDF00F080AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7A1016220260949006B0FBB /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		C7E1BEC62027BAC1000D0460 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 			children = (
 				C722F4D920196EDF00F080AA /* AppDelegate.swift */,
 				C722F4DB20196EDF00F080AA /* ViewController.swift */,
+				C7A1016220260949006B0FBB /* RatingControl.swift */,
+				C7E1BEC62027BAC1000D0460 /* Coffee.swift */,
 				C722F4DD20196EDF00F080AA /* Main.storyboard */,
 				C722F4E020196EDF00F080AA /* Assets.xcassets */,
 				C722F4E220196EDF00F080AA /* LaunchScreen.storyboard */,
@@ -200,7 +206,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C722F4DC20196EDF00F080AA /* ViewController.swift in Sources */,
+				C7A1016320260949006B0FBB /* RatingControl.swift in Sources */,
 				C722F4DA20196EDF00F080AA /* AppDelegate.swift in Sources */,
+				C7E1BEC72027BAC1000D0460 /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZXFRUSM49;
 				INFOPLIST_FILE = CafeTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cafretz.CafeTracker;
@@ -368,6 +377,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = JZXFRUSM49;
 				INFOPLIST_FILE = CafeTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cafretz.CafeTracker;
