@@ -10,27 +10,26 @@ import XCTest
 @testable import CafeTracker
 
 class CafeTrackerTests: XCTestCase {
+    //MARK: Coffee Class tests
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testCoffeeInitializationSucceeds() {
+        // Zero rating
+        let zeroRatingCoffee = Coffee.init(name: "Zero", photo: nil, rating: 0)
+        XCTAssertNotNil(zeroRatingCoffee)
+        
+        // Highest positive rating
+        let positiveRatingCoffee = Coffee.init(name: "Positive", photo: nil, rating: 5)
+        XCTAssertNotNil(positiveRatingCoffee)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testCoffeeInitializationFails() {
+        let negativeRating = Coffee.init(name: "Negative", photo: nil, rating: -42)
+        XCTAssertNil(negativeRating)
+        
+        let noNameRating = Coffee.init(name: "", photo: nil, rating: 18)
+        XCTAssertNil(noNameRating)
+        
+        let largeRatingCoffee = Coffee.init(name: "Large", photo: nil, rating: 6)
+        XCTAssertNil(largeRatingCoffee)
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
