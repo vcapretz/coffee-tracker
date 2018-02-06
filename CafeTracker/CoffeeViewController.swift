@@ -23,6 +23,14 @@ class CoffeeViewController:
         // Do any additional setup after loading the view, typically from a nib.
         
         coffeeNameTextField.delegate = self
+        
+        if let coffee = coffee {
+            navigationItem.title = coffee.name
+            coffeeNameTextField.text = coffee.name
+            photoImageView.image = coffee.photo
+            ratingControl.rating = coffee.rating
+        }
+
         updateSaveButtonState()
     }
 
@@ -63,7 +71,15 @@ class CoffeeViewController:
     
     //MARK: Navigation
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        let isPresentingAddCoffeeMode = presentedViewController is UINavigationController
+        
+        if isPresentingAddCoffeeMode {
+            dismiss(animated: true, completion: nil)
+        } else if let onwingNavigationController = navigationController {
+            onwingNavigationController.popViewController(animated: true)
+        } else {
+            fatalError("The MealViewController is not inside a navigation controller.")
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

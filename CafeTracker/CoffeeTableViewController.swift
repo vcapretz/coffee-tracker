@@ -6,6 +6,7 @@
 //  Copyright © 2018 Vitor Capretz. All rights reserved.
 //
 
+import os.log
 import UIKit
 
 class CoffeeTableViewController: UITableViewController {
@@ -15,13 +16,54 @@ class CoffeeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+        
         loadSampleCoffees()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+        case "AddItem":
+            os_log("Adding a new meal.", log: OSLog.default, type: .debug)
+        case "ShowDetail":
+            guard let coffeeDetailViewController = segue.destination as? CoffeeViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            
+            guard let selectedCoffeeCell = sender as? CoffeeTableViewCell else {
+                fatalError("Unexpected sender: \(sender ?? "noNameWhat")")
+            }
+            
+            guard let indexPath = tableView.indexPath(for: selectedCoffeeCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            
+            let selectedCoffee = coffees[indexPath.row]
+            coffeeDetailViewController.coffee = selectedCoffee
+        default:
+            fatalError("Unexpected Segue Identifier; \(segue.identifier ?? "noNameWhat")")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            coffees.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 
     //MARK: - Table view data source
@@ -51,10 +93,15 @@ class CoffeeTableViewController: UITableViewController {
     //MARK: Actions
     @IBAction func unwindToCoffeeList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? CoffeeViewController, let coffee = sourceViewController.coffee {
-            let newIndexPath = IndexPath(row: coffees.count, section: 0)
-            coffees.append(coffee)
-            
-            tableView.insertRows(at: [newIndexPath], with: .automatic)
+            if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                coffees[selectedIndexPath.row] = coffee
+                tableView.reloadRows(at: [selectedIndexPath], with: .none)
+            } else {
+                let newIndexPath = IndexPath(row: coffees.count, section: 0)
+                coffees.append(coffee)
+                
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
         }
     }
     
