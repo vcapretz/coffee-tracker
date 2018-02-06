@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iGy-FS-n0Q">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JlG-7U-Ic9">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,12 +13,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Coffee Table View Controller-->
+        <!--Your rated coffees-->
         <scene sceneID="EQ5-nG-wat">
             <objects>
                 <tableViewController id="iGy-FS-n0Q" customClass="CoffeeTableViewController" customModule="CafeTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hDO-fE-TTU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DMR-mo-Em9" id="MRV-JJ-9VS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YK1-Yv-0qT">
@@ -58,36 +58,37 @@
                             <outlet property="delegate" destination="iGy-FS-n0Q" id="TLx-HU-FFa"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Your rated coffees" id="PhW-Xp-t52">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="t2K-Kc-ZlB">
+                            <connections>
+                                <segue destination="aUQ-7A-q6g" kind="presentation" identifier="AddItem" id="jwh-v3-6xX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OvH-mr-AYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-687.20000000000005" y="85.907046476761622"/>
+            <point key="canvasLocation" x="-492" y="86"/>
         </scene>
-        <!--View Controller-->
+        <!--New Coffee-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CafeTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CoffeeViewController" customModule="CafeTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="adD-v6-Lyv">
-                                <rect key="frame" x="20" y="40" width="335" height="438.5"/>
+                                <rect key="frame" x="20" y="108" width="335" height="410"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Cafretz Coffe Shop! ☕️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6lB-CV-W42">
-                                        <rect key="frame" x="30.5" y="0.0" width="274.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your coffee type" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mDY-fR-KZe">
-                                        <rect key="frame" x="20" y="28.5" width="295" height="30"/>
+                                        <rect key="frame" x="20" y="0.0" width="295" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="e3k-n3-IXt">
-                                        <rect key="frame" x="7.5" y="66.5" width="320" height="320"/>
+                                        <rect key="frame" x="7.6666666666666572" y="38" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="e3k-n3-IXt" secondAttribute="height" multiplier="1:1" id="94P-7P-YZI"/>
@@ -97,7 +98,7 @@
                                         </connections>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="24y-za-0Jn" customClass="RatingControl" customModule="CafeTracker" customModuleProvider="target">
-                                        <rect key="frame" x="41.5" y="394.5" width="252" height="44"/>
+                                        <rect key="frame" x="41.666666666666657" y="366" width="251.99999999999997" height="44"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="starCount">
                                                 <integer key="value" value="5"/>
@@ -122,21 +123,70 @@
                         <edgeInsets key="layoutMargins" top="0.0" left="20" bottom="0.0" right="20"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="New Coffee" id="NWg-Yt-UQ5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="wah-gO-Ff0">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="zz5-fL-zeB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="KNN-mX-KsS">
+                            <connections>
+                                <segue destination="6id-q3-8pw" kind="unwind" unwindAction="unwindToCoffeeListWithSender:" id="Yr3-zr-x4s"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="coffeTypeLabel" destination="6lB-CV-W42" id="ySh-kT-OHg"/>
                         <outlet property="coffeeNameTextField" destination="mDY-fR-KZe" id="hfv-Pn-RAw"/>
                         <outlet property="photoImageView" destination="e3k-n3-IXt" id="4yU-M0-FW6"/>
                         <outlet property="ratingControl" destination="24y-za-0Jn" id="sHd-2H-mIf"/>
+                        <outlet property="saveButton" destination="KNN-mX-KsS" id="daA-tb-c84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="6id-q3-8pw" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="0Ch-J6-UQV">
                     <connections>
                         <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="xy8-Tv-WRN"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="136.5" y="133.5"/>
+            <point key="canvasLocation" x="1066" y="320"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xiO-Fk-lqc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JlG-7U-Ic9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bar-h3-YN0">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="iGy-FS-n0Q" kind="relationship" relationship="rootViewController" id="Qm5-LE-ev5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vNV-lE-koI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1260" y="86"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vQI-Q1-hHs">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aUQ-7A-q6g" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Lo-o8-eQ8">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ctT-Qi-JxU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TFk-rW-ApL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="290" y="320"/>
         </scene>
     </scenes>
     <resources>

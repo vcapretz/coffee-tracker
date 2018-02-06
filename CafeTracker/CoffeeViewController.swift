@@ -1,26 +1,29 @@
 //
-//  ViewController.swift
+//  MealViewController.swift
 //  CafeTracker
 //
 //  Created by Vitor Capretz on 24/01/18.
 //  Copyright © 2018 Vitor Capretz. All rights reserved.
 //
-
+import os.log
 import UIKit
 
-class ViewController:
+class CoffeeViewController:
     UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var coffeeNameTextField: UITextField!
-    @IBOutlet weak var coffeTypeLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var coffee: Coffee?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         coffeeNameTextField.delegate = self
+        updateSaveButtonState()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,9 +38,13 @@ class ViewController:
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        saveButton.isEnabled = false
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        coffeTypeLabel.text = textField.text
-        coffeeNameTextField.text = ""
+        updateSaveButtonState()
+        navigationItem.title = textField.text
     }
     
     //MARK: UIImagePickerControllerDelegate
@@ -54,6 +61,27 @@ class ViewController:
         dismiss(animated: true, completion: nil)
     }
     
+    //MARK: Navigation
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling!", log: OSLog.default, type: .debug)
+            
+            return
+        }
+        
+        let name = coffeeNameTextField.text ?? ""
+        let photo = photoImageView.image
+        let rating = ratingControl.rating
+        
+        coffee = Coffee(name: name, photo: photo, rating: rating)
+    }
+    
     //MARK: Actions
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         coffeeNameTextField.resignFirstResponder()
@@ -67,5 +95,10 @@ class ViewController:
         present(imagePickerController, animated: true, completion: nil)
     }
     
+    //MARK: Private Methods
+    private func updateSaveButtonState() {
+        let text = coffeeNameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
 }
 

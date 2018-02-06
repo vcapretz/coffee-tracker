@@ -24,7 +24,7 @@ class CoffeeTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
+    //MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,6 +48,17 @@ class CoffeeTableViewController: UITableViewController {
         return cell
     }
     
+    //MARK: Actions
+    @IBAction func unwindToCoffeeList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? CoffeeViewController, let coffee = sourceViewController.coffee {
+            let newIndexPath = IndexPath(row: coffees.count, section: 0)
+            coffees.append(coffee)
+            
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        }
+    }
+    
+    //Mark: Private Methods
     private func loadSampleCoffees() {
         let photo1 = UIImage(named: "coffee1")
         let photo2 = UIImage(named: "coffee2")
