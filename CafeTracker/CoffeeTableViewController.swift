@@ -125,4 +125,18 @@ class CoffeeTableViewController: UITableViewController {
         
         coffees += [coffee1, coffee2, coffee3]
     }
+    
+    private func saveCoffees() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(coffees, toFile: Coffee.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("Coffees successuly saved", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save coffees", log: OSLog.default, type: .error)
+        }
+    }
+    
+    private func loadCoffees() -> [Coffee]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Coffee.ArchiveURL.path) as? [Coffee]
+    }
 }
