@@ -19,7 +19,11 @@ class CoffeeTableViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = editButtonItem
         
-        loadSampleCoffees()
+        if let savedCoffees = loadCoffees() {
+            coffees += savedCoffees
+        } else {
+            loadSampleCoffees()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +62,7 @@ class CoffeeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             coffees.remove(at: indexPath.row)
+            saveCoffees()
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -103,6 +108,8 @@ class CoffeeTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         }
+        
+        saveCoffees()
     }
     
     //Mark: Private Methods
