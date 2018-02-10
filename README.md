@@ -5,7 +5,7 @@ This is an app to keep track of the best coffees you drank!
 
 It was developed with study purposes so I could learn about iOS development, so feel free to suggest any changes!
 
-![Demo gif](demo.gif)
+<img src="demo.gif" alt="Demo gif to show working app" width=200 />
 
 ## Features
 
